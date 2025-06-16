@@ -1,0 +1,196 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  {
+    title: 'Municipio de El Marqués',
+    image: '/images/projects/MMQ-login.png',
+    tech: ['Angular', 'TypeScript', 'PHP Slim'],
+    shortDescription: 'Proyecto para la gestión de finanzas públicas.',
+    details: `
+      • Implementación de rutas dinámicas y guards para accesos  
+      • Formularios con Validaciones Personalizadas y Reactive Forms  
+      • Arquitectura basada en módulos lazy-loaded para optimizar carga  
+      • Integración con una API REST y MockServiceWorker para pruebas  
+    `
+  },
+  {
+    title: 'Aplicación Redufácil iOS/Android',
+    image: '/images/projects/RF-app.png',
+    tech: ['Flutter', 'Dart', 'PHP', 'MySQL'],
+    shortDescription: 'Aplicación móvil para gestión de citas y seguimiento de peso corporal.',
+    details: `
+      • Diseño de base de datos relacional con índices y llaves foráneas  
+      • Endpoints RESTful con validación y manejo de errores personalizado  
+      • Autenticación JWT y middleware para autorización de rutas  
+      • Documentación automática con Swagger  
+    `,
+    link: 'https://github.com/tu-usuario/sistema-php-mysql'
+  },
+  {
+    title: 'Página Web Redufácil',
+    image: '/images/projects/RF-web.png',
+    tech: ['HTML', 'CSS', 'JavaScript', 'PHP'],
+    shortDescription: 'Sitio web de Redufácil con enfoque en experiencia de usuario y presencia digital profesional.',
+    details: `
+      • UI responsiva con Material Design y widgets personalizados  
+      • Gestión de estado con Provider y Streams  
+      • Integración con Firebase Auth y Firestore  
+      • Publicación en Google Play y App Store  
+    `,
+    link: 'https://github.com/tu-usuario/app-flutter'
+  }
+];
+
+const skills = ['Angular', 'PHP', 'MySQL', 'Flutter'];
+---
+
+<Layout>
+
+  <!-- Información personal -->
+  <section class="pt-16 pb-8 px-4">
+    
+    <div class="max-w-3xl mx-auto text-center mb-12">
+
+    <div class="mx-auto w-32 h-32 mb-6 overflow-hidden rounded-full border-4 border-indigo-500">
+      <img
+        src="/images/perfil.jpg"
+        alt="Foto de José Eduardo García Olvera"
+        class="object-cover w-full h-full"
+      />
+    </div>
+
+    <h1 class="text-5xl font-extrabold text-gray-100 mb-2 flex items-center justify-center space-x-3">
+      <iconify-icon icon="mdi:rocket-launch" class="text-indigo-400 text-4xl"></iconify-icon>
+      <span>José Eduardo García Olvera</span>
+    </h1>
+
+    <p class="text-xl text-indigo-400 font-semibold mb-4">
+      Desarrollador Full-Stack
+    </p>
+
+    <p class="text-lg text-indigo-300 font-medium mb-6">
+      Angular<br />
+      PHP · MySQL · Flutter
+    </p>
+
+    <!-- <p class="text-gray-300 mb-6 flex items-center justify-center space-x-2">
+      <iconify-icon icon="mdi:map-marker" class="text-xl"></iconify-icon>
+      <span>Querétaro, México <span class="inline-block">🇲🇽</span></span>
+    </p> -->
+
+    <div class="flex justify-center space-x-4">
+      <a
+        href="mailto:eduardo.garcia.olvera@hotmail.com"
+        class="px-5 py-2 bg-indigo-500 rounded-full text-white font-medium hover:bg-indigo-600 transition"
+      >
+        Contacto
+      </a>
+      <a
+        href="https://github.com/clockgradozero"
+        target="_blank"
+        class="px-5 py-2 border border-indigo-500 rounded-full text-indigo-500 font-medium hover:bg-indigo-500 hover:text-white transition"
+      >
+        GitHub
+      </a>
+    </div>
+  </div>
+  </section>
+
+  <!-- Proyectos Destacados -->
+  <section class="py-10 px-4 bg-gray-900">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-bold text-gray-100 mb-8 text-center">
+        Proyectos Destacados
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map(project => (
+          <div class="flex flex-col bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform transition hover:-translate-y-1 hover:shadow-2xl">
+            
+            {/* Imagen de miniatura */}
+            <img
+              src={project.image}
+              alt={`Imagen de ${project.title}`}
+              class="w-full h-48 object-cover"
+            />
+
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-2xl font-semibold text-gray-100 mb-2">
+                {project.title}
+              </h3>
+              <p class="text-gray-300 mb-4 flex-1">
+                {project.shortDescription}
+              </p>
+
+              {/* Etiquetas de tecnologías */}
+              <div class="flex flex-wrap gap-2 mb-4">
+                {project.tech.map(tag => (
+                  <span class="bg-indigo-600 text-indigo-100 px-2 py-1 rounded-full text-xs">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* Desplegable de detalles */}
+              <details class="group">
+                <summary class="cursor-pointer font-medium text-indigo-400 hover:text-indigo-300">
+                  Ver detalles →
+                </summary>
+                <div class="mt-3 prose prose-invert text-sm text-gray-300">
+                  {project.details.trim().split('\n').map(line => (
+                    <p>{line.trim()}</p>
+                  ))}
+                </div>
+
+                 {project.link && (
+                   <a
+                     href={project.link}
+                     target="_blank"
+                     class="mt-4 inline-block text-sm font-medium text-indigo-400 hover:underline"
+                   >
+                     Visitar repositorio
+                   </a>
+                 )}
+              </details>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre mí -->
+  <section class="py-16 px-4 bg-gray-800">
+    <h2 class="text-3xl font-extrabold text-center mb-12 text-gray-100">
+      Sobre Mí
+    </h2>
+    <div class="max-w-3xl mx-auto text-gray-300">
+      <p class="mb-6">
+        Soy un desarrollador full-stack con más de 5 años de experiencia creando aplicaciones web y móviles. Me especializo en Angular, PHP y Flutter, y disfruto resolver problemas complejos con soluciones elegantes.
+      </p>
+      <p>
+        Siempre estoy aprendiendo nuevas tecnologías y buscando mejorar mis habilidades. Me apasiona el desarrollo ágil y la colaboración en equipo para entregar productos de alta calidad.
+      </p>
+    </div>
+  </section>
+
+  <!-- Habilidades -->
+  <section class="py-16 px-4 bg-gray-900">
+    <h2 class="text-3xl font-extrabold text-center mb-12 text-gray-100">
+      Habilidades
+    </h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+      {skills.map(skill => (
+        <div
+          class="flex flex-col items-center justify-center p-6 bg-gray-800 rounded-2xl shadow-lg transform transition hover:-translate-y-1 hover:shadow-2xl"
+        >
+          <span class="text-xl font-semibold text-indigo-400 mb-2">
+            {skill}
+          </span>
+          <div class="h-1 w-16 bg-indigo-400 rounded-full"></div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+</Layout>
