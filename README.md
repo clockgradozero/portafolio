@@ -1,15 +1,11 @@
-# Astro Dark Portfolio
+# Portafolio Dev
 
-Portfolio web creado con Astro y Tailwind CSS en modo oscuro.
+Portafolio web creado con Astro y Tailwind CSS.
 
 ## Tecnologías
 
 - Astro
 - Tailwind CSS
-- Angular
-- PHP
-- MySQL
-- Flutter
 
 ## Instalación
 
