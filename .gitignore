@@ -1,0 +1,5 @@
+# Dependencias de Node
+/node_modules/
+
+# Directorios de build y cache de Astro/Vite
+/.astro/
